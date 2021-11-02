@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice with jQuery Events</title>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(function() {
+            // //Event Method 1
+            // $('button').click(function(event) {
+            //     window.alert('The button has been clicked!')
+            // });
+
+            // //Method 2
+            // $('button').bind('click', function(event) {
+            //     window.alert('The button has been clicked!')
+            // });
+
+
+            // //Method 3
+            // $('button').on({click: function(event) {
+            //     window.alert('The button has been clicked!');
+            // }});
+
+            // //Two Buttons Event
+            // $('button').on({click: function(event) {
+            //     window.alert('The button has been clicked!');
+            // }});
+
+            // //Alternative to Two Buttons Event
+            // $('#button1, #button2').on({click: function(event) {
+            //     window.alert('The button has been clicked!');
+            // }});
+
+            // //div
+            // $('div')
+            // .css('width', '400px')
+            // .css('height', '400px')
+            // .on({click: function(event) {
+            //     window.alert('The div has been clicked!');
+            // },
+            // mouseenter: function(event) {
+            //     window.alert('The mouse has entered the div!');
+            // },
+            // mouseleave: function(event) {
+            //     window.alert('The mouse has left the div!');
+            // },
+            // });
+
+            //div with span tag
+            // $('div')
+            // .css('width', '400px')
+            // .css('height', '400px')
+            // .on({click: function(event) {
+            //     $('span').prepend('The div has been clicked!<br>');
+            // },
+            // mouseenter: function(event) {
+            //     $('span').prepend('The mouse has entered the div!<br>');
+            // },
+            // mouseleave: function(event) {
+            //     $('span').prepend('The mouse has left the div!<br>');
+            // },
+            // });
+
+            //Link
+            // $('a').on({click: function(event) {
+            //     event.preventDefault();
+            //     $(this).css("color", "red");
+            //     window.alert(event.target.nodeName);
+            // }
+            // });
+
+            // //div height and width displayed
+            // $(window).on({resize: function(event) {
+            //     $('div').text('Width: ' + $(window).width())
+            //     .append('<br>' + 'Height: ' + $(window).height())
+            // }})
+
+            // //Input with Focus
+            // $('input').on({focus: function(event) {
+            //     $(this).css('backgroundColor', '#d3d3d3');
+            // },focusout: function(event) {
+            //     $(this).css('backgroundColor', '#FFFFFF');
+            // }
+            // })
+
+            //Form with two input and submit button
+            $('#form').submit(function (event) {
+                var isValid = true;
+                var formName = $('#name').val();
+                var formEmail = $('#email').val();
+            if (formName == '') {
+                    isValid = false;
+                    alert('All fields are required. Please fill Name and Email!');
+                    $('#name').css('border', '#FF0000 solid 2px');
+                }
+            else { 
+                $('#name').css('border', '#008000 solid 2px');
+            }
+            if (formEmail == '') {
+                    isValid = false;
+                    alert('All fields are required. Please fill Name and Email!');
+                    $('#email').css('border', '#FF0000 solid 2px');
+                }
+            else { 
+                $('#email').css('border', '#008000 solid 2px');
+            }
+            if (isValid == false) {
+                event.preventDefault();
+            }
+            else {
+                isValid == true;
+                event.preventDefault();
+                $('#name,#email').css('border', '#008000 solid 2px')
+            }
+            });
+         });
+    </script>
+</head>
+<body>
+<button id="button1">Click me!</button><br>
+<button id="button2">Click me too!</button>
+<div><span></span></div>
+<a href="modulemedia.com">Modulemedia</a><br>
+<form>
+    <input type="text"><br><br>
+</form>
+<form id="form">
+    Name: <input type="text" id="name"><br>
+   Email:  <input type="text" id="email"><br>
+   <button>Submit</button>
+</form>
+</body>
+</html>
